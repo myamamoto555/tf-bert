@@ -1,0 +1,20 @@
+# coding:utf-8
+
+fo = open("output.txt", "w")
+
+with open("/tmp/bl5000/test_results.tsv") as f1, open("/tmp/taska2361_pretrained/test_results.tsv") as f2:
+    for l1, l2 in zip(f1, f2):
+        prob = float(l1.split("\t")[0]) + float(l2.split("\t")[0])
+        if prob < 1:
+            fo.write("1\n")
+        if prob >= 1:
+            fo.write("0\n")
+        #prob = float(l1.split("\t")[0])
+        #if prob < 0.5:
+        #    fo.write("1\n")
+        #if prob >= 0.5:
+        #    fo.write("0\n")
+
+
+
+fo.close()
